@@ -1,8 +1,8 @@
-package org.saar.jproperty.type;
+package org.jproperty.type;
 
-import org.saar.jproperty.ChangeListener;
-import org.saar.jproperty.ListenersHelper;
-import org.saar.jproperty.ReadOnlyProperty;
+import org.jproperty.ChangeListener;
+import org.jproperty.ListenersHelper;
+import org.jproperty.ReadOnlyProperty;
 
 public abstract class ReadOnlyNumberProperty implements ReadOnlyProperty<Number> {
 

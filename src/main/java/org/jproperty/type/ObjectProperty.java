@@ -1,9 +1,9 @@
-package org.saar.jproperty.type;
+package org.jproperty.type;
 
-import org.saar.jproperty.ChangeEventBase;
-import org.saar.jproperty.Property;
-import org.saar.jproperty.ReadOnlyProperty;
-import org.saar.jproperty.binding.Bindings;
+import org.jproperty.ChangeEventBase;
+import org.jproperty.Property;
+import org.jproperty.ReadOnlyProperty;
+import org.jproperty.binding.Bindings;
 
 public class ObjectProperty<T> extends ReadOnlyObjectProperty<T> implements Property<T> {
 

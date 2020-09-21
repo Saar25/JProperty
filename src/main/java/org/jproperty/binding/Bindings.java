@@ -1,7 +1,7 @@
-package org.saar.jproperty.binding;
+package org.jproperty.binding;
 
-import org.saar.jproperty.Property;
-import org.saar.jproperty.ReadOnlyProperty;
+import org.jproperty.Property;
+import org.jproperty.ReadOnlyProperty;
 
 public final class Bindings {
 

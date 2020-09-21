@@ -1,4 +1,4 @@
-package org.saar.jproperty;
+package org.jproperty;
 
 public interface ChangeListener<T> {
 

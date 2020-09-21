@@ -1,4 +1,4 @@
-package org.saar.jproperty;
+package org.jproperty;
 
 public class ChangeEventBase<T> implements ChangeEvent<T> {
 

@@ -1,18 +1,18 @@
-package org.saar.jproperty.type;
+package org.jproperty.type;
 
-import org.saar.jproperty.ChangeEventBase;
-import org.saar.jproperty.Property;
-import org.saar.jproperty.ReadOnlyProperty;
-import org.saar.jproperty.binding.Bindings;
+import org.jproperty.ChangeEventBase;
+import org.jproperty.Property;
+import org.jproperty.ReadOnlyProperty;
+import org.jproperty.binding.Bindings;
 
-public class FloatProperty extends ReadOnlyFloatProperty implements Property<Number> {
+public class IntProperty extends ReadOnlyIntProperty implements Property<Number> {
 
     private ReadOnlyProperty<? extends Number> bound = null;
 
-    public FloatProperty() {
+    public IntProperty() {
     }
 
-    public FloatProperty(float value) {
+    public IntProperty(int value) {
         super(value);
     }
 
@@ -42,10 +42,10 @@ public class FloatProperty extends ReadOnlyFloatProperty implements Property<Num
 
     @Override
     public void setValue(Number value) {
-        set(value.floatValue());
+        set(value.intValue());
     }
 
-    public void set(float value) {
+    public void set(int value) {
         if (get() != value) {
             final ChangeEventBase<Number> event = new ChangeEventBase<>(this, this.value, value);
 

@@ -1,4 +1,4 @@
-package org.saar.jproperty;
+package org.jproperty;
 
 public interface Property<T> extends ReadOnlyProperty<T> {
 
