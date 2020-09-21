@@ -19,8 +19,8 @@ final IntProperty intProperty = new IntProperty(8);
 final FloatProperty floatProperty = new FloatProperty(1.7f);
 final ObjectProperty<Object> objectProperty = new ObjectProperty<>(new Object());
 
-final ReadOnlyIntProperty intProperty = new IntProperty();
-final ReadOnlyFloatProperty floatProperty = new FloatProperty();
+final ReadOnlyIntProperty readOnlyIntProperty = new IntProperty();
+final ReadOnlyFloatProperty readOnlyFloatProperty = new FloatProperty();
 ```
 #### Listening to value changes
 ```java
