@@ -1,4 +1,4 @@
-package org.saar.jproperty;
+package org.jproperty;
 
 import java.util.ArrayList;
 import java.util.Arrays;

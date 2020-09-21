@@ -1,8 +1,8 @@
-package org.saar.jproperty.binding;
+package org.jproperty.binding;
 
-import org.saar.jproperty.ChangeEvent;
-import org.saar.jproperty.ChangeListener;
-import org.saar.jproperty.Property;
+import org.jproperty.ChangeEvent;
+import org.jproperty.ChangeListener;
+import org.jproperty.Property;
 
 import java.util.Objects;
 

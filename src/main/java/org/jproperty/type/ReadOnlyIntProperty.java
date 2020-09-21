@@ -1,6 +1,6 @@
-package org.saar.jproperty.type;
+package org.jproperty.type;
 
-import org.saar.jproperty.ReadOnlyProperty;
+import org.jproperty.ReadOnlyProperty;
 
 public class ReadOnlyIntProperty extends ReadOnlyNumberProperty implements ReadOnlyProperty<Number> {
 
