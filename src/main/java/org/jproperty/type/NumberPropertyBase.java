@@ -28,44 +28,4 @@ public abstract class NumberPropertyBase implements NumberProperty {
     public void unbindBidirectional(Property<Number> observable) {
         Bindings.unbindBidirectional(this, observable);
     }
-
-    @Override
-    public int getIntValue() {
-        return getValue().intValue();
-    }
-
-    @Override
-    public float getFloatValue() {
-        return getValue().floatValue();
-    }
-
-    @Override
-    public long getLongValue() {
-        return getValue().longValue();
-    }
-
-    @Override
-    public double getDoubleValue() {
-        return getValue().doubleValue();
-    }
-
-    @Override
-    public void setValue(int value) {
-        setValue(Integer.valueOf(value));
-    }
-
-    @Override
-    public void setValue(long value) {
-        setValue(Long.valueOf(value));
-    }
-
-    @Override
-    public void setValue(float value) {
-        setValue(Float.valueOf(value));
-    }
-
-    @Override
-    public void setValue(double value) {
-        setValue(Double.valueOf(value));
-    }
 }
