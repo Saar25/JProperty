@@ -1,30 +1,10 @@
 package org.jproperty.type;
 
-import org.jproperty.ReadOnlyProperty;
-
-public class ReadOnlyIntProperty extends ReadOnlyNumberProperty implements ReadOnlyProperty<Number> {
-
-    protected int value;
-
-    public ReadOnlyIntProperty() {
-        this.value = 0;
-    }
-
-    public ReadOnlyIntProperty(int value) {
-        this.value = value;
-    }
+public interface ReadOnlyIntProperty extends ReadOnlyNumberProperty {
 
     @Override
-    public int getIntValue() {
-        return get();
-    }
+    Integer getValue();
 
-    @Override
-    public Integer getValue() {
-        return get();
-    }
+    int get();
 
-    public int get() {
-        return this.value;
-    }
 }

@@ -1,36 +1,10 @@
 package org.jproperty.type;
 
-import org.jproperty.ChangeListener;
-import org.jproperty.ListenersHelper;
 import org.jproperty.ReadOnlyProperty;
 
-public abstract class ReadOnlyNumberProperty implements ReadOnlyProperty<Number> {
-
-    protected ListenersHelper<Number> helper = ListenersHelper.empty();
+public interface ReadOnlyNumberProperty extends ReadOnlyProperty<Number> {
 
     @Override
-    public void addListener(ChangeListener<? super Number> listener) {
-        this.helper = this.helper.addListener(listener);
-    }
+    Number getValue();
 
-    @Override
-    public void removeListener(ChangeListener<? super Number> listener) {
-        this.helper = this.helper.removeListener(listener);
-    }
-
-    public int getIntValue() {
-        return getValue().intValue();
-    }
-
-    public float getFloatValue() {
-        return getValue().floatValue();
-    }
-
-    public long getLongValue() {
-        return getValue().longValue();
-    }
-
-    public double getDoubleValue() {
-        return getValue().doubleValue();
-    }
 }
