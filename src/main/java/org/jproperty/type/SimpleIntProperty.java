@@ -32,6 +32,11 @@ public class SimpleIntProperty extends NumberPropertyBase implements IntProperty
     }
 
     @Override
+    public boolean isBound() {
+        return this.bound != null;
+    }
+
+    @Override
     public void setValue(int value) {
         set(value);
     }

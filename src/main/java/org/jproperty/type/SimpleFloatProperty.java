@@ -32,6 +32,11 @@ public class SimpleFloatProperty extends NumberPropertyBase implements FloatProp
     }
 
     @Override
+    public boolean isBound() {
+        return this.bound != null;
+    }
+
+    @Override
     public void setValue(float value) {
         set(value);
     }

@@ -49,6 +49,11 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
     }
 
     @Override
+    public boolean isBound() {
+        return this.bound != null;
+    }
+
+    @Override
     public void bindBidirectional(Property<T> observable) {
         Bindings.bindBidirectional(this, observable);
     }
