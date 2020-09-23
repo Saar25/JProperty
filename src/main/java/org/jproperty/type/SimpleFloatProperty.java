@@ -19,13 +19,14 @@ public class SimpleFloatProperty extends NumberPropertyBase implements FloatProp
 
     @Override
     public void bind(ReadOnlyProperty<? extends Number> observable) {
+        unbind();
         Bindings.bind(this, observable);
         this.bound = observable;
     }
 
     @Override
     public void unbind() {
-        if (this.bound != null) {
+        if (isBound()) {
             Bindings.unbind(this, this.bound);
             this.bound = null;
         }

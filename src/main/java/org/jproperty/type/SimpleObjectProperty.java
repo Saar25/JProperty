@@ -36,13 +36,14 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
     @Override
     public void bind(ReadOnlyProperty<? extends T> observable) {
+        unbind();
         Bindings.bind(this, observable);
         this.bound = observable;
     }
 
     @Override
     public void unbind() {
-        if (this.bound != null) {
+        if (isBound()) {
             Bindings.unbind(this, this.bound);
             this.bound = null;
         }
