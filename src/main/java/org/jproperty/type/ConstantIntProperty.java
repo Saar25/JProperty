@@ -17,4 +17,9 @@ public class ConstantIntProperty extends ConstantNumberPropertyBase implements R
     public Integer getValue() {
         return get();
     }
+
+    @Override
+    public String toString() {
+        return "ConstantIntProperty{" + get() + '}';
+    }
 }

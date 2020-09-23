@@ -61,4 +61,9 @@ public class SimpleFloatProperty extends NumberPropertyBase implements FloatProp
             this.helper.fireEvent(event);
         }
     }
+
+    @Override
+    public String toString() {
+        return "SimpleFloatProperty{" + get() + '}';
+    }
 }

@@ -61,4 +61,9 @@ public class SimpleIntProperty extends NumberPropertyBase implements IntProperty
             this.helper.fireEvent(event);
         }
     }
+
+    @Override
+    public String toString() {
+        return "SimpleIntProperty{" + get() + '}';
+    }
 }

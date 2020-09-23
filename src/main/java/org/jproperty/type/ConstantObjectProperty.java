@@ -12,4 +12,9 @@ public class ConstantObjectProperty<T> extends ConstantPropertyBase<T> implement
     public T getValue() {
         return this.value;
     }
+
+    @Override
+    public String toString() {
+        return "ConstantObjectProperty{" + getValue() + '}';
+    }
 }

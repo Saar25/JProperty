@@ -17,4 +17,9 @@ public class ConstantFloatProperty extends ConstantNumberPropertyBase implements
     public Float getValue() {
         return get();
     }
+
+    @Override
+    public String toString() {
+        return "ConstantFloatProperty{" + get() + '}';
+    }
 }

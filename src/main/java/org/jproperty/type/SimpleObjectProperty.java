@@ -73,4 +73,9 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
             this.helper.fireEvent(event);
         }
     }
+
+    @Override
+    public String toString() {
+        return "SimpleObjectProperty{" + getValue() + '}';
+    }
 }
