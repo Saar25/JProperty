@@ -15,12 +15,12 @@ Java utility library that provides properties, like JavaFX but simplified
 #### Wrapping java primitives and objects.
 
 ```java
-final IntProperty intProperty = new IntProperty(8);
-final FloatProperty floatProperty = new FloatProperty(1.7f);
-final ObjectProperty<Object> objectProperty = new ObjectProperty<>(new Object());
+final IntProperty intProperty = new SimpleIntProperty(8);
+final FloatProperty floatProperty = new SimpleFloatProperty(1.7f);
+final ObjectProperty<Object> objectProperty = new SimpleObjectProperty<>(new Object());
 
-final ReadOnlyIntProperty readOnlyIntProperty = new IntProperty();
-final ReadOnlyFloatProperty readOnlyFloatProperty = new FloatProperty();
+final ReadOnlyIntProperty readOnlyIntProperty = new SimpleIntProperty();
+final ReadOnlyFloatProperty readOnlyFloatProperty = new SimpleFloatProperty();
 ```
 #### Listening to value changes
 ```java
