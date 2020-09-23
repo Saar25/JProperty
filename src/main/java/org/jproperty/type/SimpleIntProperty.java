@@ -32,6 +32,16 @@ public class SimpleIntProperty extends NumberPropertyBase implements IntProperty
     }
 
     @Override
+    public void setValue(int value) {
+        set(value);
+    }
+
+    @Override
+    public int getIntValue() {
+        return get();
+    }
+
+    @Override
     public void setValue(Number value) {
         set(value.intValue());
     }

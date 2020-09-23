@@ -1,8 +1,6 @@
 package org.jproperty.type;
 
-import org.jproperty.Property;
-
-public interface FloatProperty extends ReadOnlyFloatProperty, Property<Number> {
+public interface FloatProperty extends ReadOnlyFloatProperty, NumberProperty {
 
     void set(float value);
 

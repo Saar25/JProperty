@@ -1,8 +1,6 @@
 package org.jproperty.type;
 
-import org.jproperty.ReadOnlyProperty;
-
-public interface ReadOnlyIntProperty extends ReadOnlyProperty<Number> {
+public interface ReadOnlyIntProperty extends ReadOnlyNumberProperty {
 
     int get();
 

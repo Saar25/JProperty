@@ -32,6 +32,16 @@ public class SimpleFloatProperty extends NumberPropertyBase implements FloatProp
     }
 
     @Override
+    public void setValue(float value) {
+        set(value);
+    }
+
+    @Override
+    public float getFloatValue() {
+        return get();
+    }
+
+    @Override
     public void setValue(Number value) {
         set(value.floatValue());
     }
