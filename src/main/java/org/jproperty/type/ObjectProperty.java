@@ -1,19 +1,37 @@
 package org.jproperty.type;
 
-import org.jproperty.ChangeEventBase;
-import org.jproperty.Property;
-import org.jproperty.ReadOnlyProperty;
+import org.jproperty.*;
 import org.jproperty.binding.Bindings;
 
-public class ObjectProperty<T> extends ReadOnlyObjectProperty<T> implements Property<T> {
+public class ObjectProperty<T> implements ReadOnlyObjectProperty<T>, Property<T> {
 
     private ReadOnlyProperty<? extends T> bound = null;
 
+    protected ListenersHelper<T> helper = ListenersHelper.empty();
+
+    protected T value;
+
     public ObjectProperty() {
+        this.value = null;
     }
 
     public ObjectProperty(T value) {
-        super(value);
+        this.value = value;
+    }
+
+    @Override
+    public void addListener(ChangeListener<? super T> listener) {
+        this.helper = this.helper.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(ChangeListener<? super T> listener) {
+        this.helper = this.helper.removeListener(listener);
+    }
+
+    @Override
+    public T getValue() {
+        return this.value;
     }
 
     @Override

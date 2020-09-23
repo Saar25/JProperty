@@ -2,9 +2,10 @@ package org.jproperty.type;
 
 import org.jproperty.ChangeListener;
 import org.jproperty.ListenersHelper;
-import org.jproperty.ReadOnlyProperty;
+import org.jproperty.Property;
+import org.jproperty.binding.Bindings;
 
-public abstract class ReadOnlyNumberProperty implements ReadOnlyProperty<Number> {
+public abstract class NumberPropertyBase implements Property<Number> {
 
     protected ListenersHelper<Number> helper = ListenersHelper.empty();
 
@@ -16,6 +17,16 @@ public abstract class ReadOnlyNumberProperty implements ReadOnlyProperty<Number>
     @Override
     public void removeListener(ChangeListener<? super Number> listener) {
         this.helper = this.helper.removeListener(listener);
+    }
+
+    @Override
+    public void bindBidirectional(Property<Number> observable) {
+        Bindings.bindBidirectional(this, observable);
+    }
+
+    @Override
+    public void unbindBidirectional(Property<Number> observable) {
+        Bindings.unbindBidirectional(this, observable);
     }
 
     public int getIntValue() {
