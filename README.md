@@ -4,7 +4,7 @@ Java utility library that provides properties, like JavaFX but simplified
 ## Using JProperty with maven
 ```xml
 <dependency>
-    <groupId>org.jproperty</groupId>
+    <groupId>com.github.saar25</groupId>
     <artifactId>jproperty</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
