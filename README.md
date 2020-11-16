@@ -6,7 +6,7 @@ Java utility library that provides properties, like JavaFX but simplified
 <dependency>
     <groupId>com.github.saar25</groupId>
     <artifactId>jproperty</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
