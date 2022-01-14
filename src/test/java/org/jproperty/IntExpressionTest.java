@@ -123,6 +123,33 @@ public class IntExpressionTest {
         Assertions.assertEquals(expression.get(), 11 / 4);
     }
 
+
+    @Test
+    public void testSum() {
+        this.intProperty.set(7);
+        this.otherProperty.set(3);
+
+        final IntExpression expression = IntExpressions.sum(this.intProperty, this.otherProperty);
+
+        Assertions.assertEquals(expression.get(), 7 + 3);
+    }
+
+    @Test
+    public void testSumUpdates() {
+        this.intProperty.set(7);
+        this.otherProperty.set(3);
+
+        final IntExpression expression = IntExpressions.sum(this.intProperty, this.otherProperty);
+
+        this.intProperty.set(11);
+
+        Assertions.assertEquals(expression.get(), 11 + 3);
+
+        this.otherProperty.set(4);
+
+        Assertions.assertEquals(expression.get(), 11 + 4f);
+    }
+
     @Test
     public void testMax() {
         this.intProperty.set(7);

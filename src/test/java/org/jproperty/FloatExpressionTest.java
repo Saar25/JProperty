@@ -124,6 +124,32 @@ public class FloatExpressionTest {
     }
 
     @Test
+    public void testSum() {
+        this.floatProperty.set(7f);
+        this.otherProperty.set(3f);
+
+        final FloatExpression expression = FloatExpressions.sum(this.floatProperty, this.otherProperty);
+
+        Assertions.assertEquals(expression.get(), 7f + 3f);
+    }
+
+    @Test
+    public void testSumUpdates() {
+        this.floatProperty.set(7f);
+        this.otherProperty.set(3f);
+
+        final FloatExpression expression = FloatExpressions.sum(this.floatProperty, this.otherProperty);
+
+        this.floatProperty.set(11f);
+
+        Assertions.assertEquals(expression.get(), 11f + 3f);
+
+        this.otherProperty.set(4f);
+
+        Assertions.assertEquals(expression.get(), 11f + 4f);
+    }
+
+    @Test
     public void testMax() {
         this.floatProperty.set(7f);
         this.otherProperty.set(3f);

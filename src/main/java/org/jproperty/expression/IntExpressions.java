@@ -83,6 +83,18 @@ public class IntExpressions {
         return new IntExpression(property, subscriptions);
     }
 
+    public static IntExpression sum(ReadOnlyNumberProperty... properties) {
+        final SimpleIntProperty property = new SimpleIntProperty(
+                Arrays.stream(properties).mapToInt(ReadOnlyNumberProperty::getIntValue).sum()
+        );
+
+        final List<Subscription> subscriptions = Arrays.stream(properties).map(p -> p.subscribe(e ->
+                property.set(Arrays.stream(properties).mapToInt(ReadOnlyNumberProperty::getIntValue).sum())
+        )).collect(Collectors.toList());
+
+        return new IntExpression(property, subscriptions);
+    }
+
     public static IntExpression min(ReadOnlyNumberProperty... properties) {
         final SimpleIntProperty property = new SimpleIntProperty(
                 Arrays.stream(properties).mapToInt(ReadOnlyNumberProperty::getIntValue).min().orElse(0)

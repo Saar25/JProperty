@@ -83,6 +83,18 @@ public class FloatExpressions {
         return new FloatExpression(property, subscriptions);
     }
 
+    public static FloatExpression sum(ReadOnlyNumberProperty... properties) {
+        final SimpleFloatProperty property = new SimpleFloatProperty(
+                Arrays.stream(properties).map(ReadOnlyNumberProperty::getFloatValue).reduce(0f, Float::sum)
+        );
+
+        final List<Subscription> subscriptions = Arrays.stream(properties).map(p -> p.subscribe(e ->
+                property.set(Arrays.stream(properties).map(ReadOnlyNumberProperty::getFloatValue).reduce(0f, Float::sum))
+        )).collect(Collectors.toList());
+
+        return new FloatExpression(property, subscriptions);
+    }
+
     public static FloatExpression min(ReadOnlyNumberProperty... properties) {
         final SimpleFloatProperty property = new SimpleFloatProperty(
                 Arrays.stream(properties).min((a, b) -> (int) (a.getFloatValue() - b.getFloatValue()))
