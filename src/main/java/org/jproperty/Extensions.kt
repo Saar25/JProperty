@@ -1,9 +1,6 @@
 package org.jproperty
 
-import org.jproperty.expression.FloatExpression
-import org.jproperty.expression.FloatExpressions
-import org.jproperty.expression.IntExpression
-import org.jproperty.expression.IntExpressions
+import org.jproperty.expression.*
 import org.jproperty.type.ReadOnlyFloatProperty
 import org.jproperty.type.ReadOnlyIntProperty
 import org.jproperty.type.ReadOnlyNumberProperty
@@ -43,3 +40,7 @@ infix fun ReadOnlyFloatProperty.max(other: Float): FloatExpression = FloatExpres
 
 infix fun ReadOnlyFloatProperty.min(other: ReadOnlyNumberProperty): FloatExpression = FloatExpressions.min(this, other)
 infix fun ReadOnlyFloatProperty.min(other: Float): FloatExpression = FloatExpressions.min(other, this)
+
+fun <T> ReadOnlyProperty<T>.mapToInt(mapper: (T) -> Int): IntExpression = Expressions.mapToInt(this, mapper)
+fun <T> ReadOnlyProperty<T>.mapToFloat(mapper: (T) -> Float): FloatExpression = Expressions.mapToFloat(this, mapper)
+fun <I, O> ReadOnlyProperty<I>.map(mapper: (I) -> O): Expression<O> = Expressions.map(this, mapper)
