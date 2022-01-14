@@ -5,11 +5,9 @@ import org.jproperty.binding.Bindings;
 
 public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
-    private ReadOnlyProperty<? extends T> bound = null;
-
     protected ListenersHelper<T> helper = ListenersHelper.empty();
-
     protected T value;
+    private ReadOnlyProperty<? extends T> bound = null;
 
     public SimpleObjectProperty() {
         this.value = null;
@@ -20,18 +18,25 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
     }
 
     @Override
-    public void addListener(ChangeListener<? super T> listener) {
+    public Subscription subscribe(Subscriber<? super T> listener) {
         this.helper = this.helper.addListener(listener);
-    }
 
-    @Override
-    public void removeListener(ChangeListener<? super T> listener) {
-        this.helper = this.helper.removeListener(listener);
+        return () -> this.helper = this.helper.removeListener(listener);
     }
 
     @Override
     public T getValue() {
         return this.value;
+    }
+
+    @Override
+    public void setValue(T value) {
+        if (this.value != value) {
+            final ChangeEventBase<T> event = new ChangeEventBase<>(this, this.value, value);
+
+            this.value = value;
+            this.helper.fireEvent(event);
+        }
     }
 
     @Override
@@ -62,16 +67,6 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
     @Override
     public void unbindBidirectional(Property<T> observable) {
         Bindings.unbindBidirectional(this, observable);
-    }
-
-    @Override
-    public void setValue(T value) {
-        if (this.value != value) {
-            final ChangeEventBase<T> event = new ChangeEventBase<>(this, this.value, value);
-
-            this.value = value;
-            this.helper.fireEvent(event);
-        }
     }
 
     @Override

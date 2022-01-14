@@ -1,8 +1,9 @@
 package org.jproperty.type;
 
-import org.jproperty.ChangeListener;
 import org.jproperty.ListenersHelper;
 import org.jproperty.Property;
+import org.jproperty.Subscriber;
+import org.jproperty.Subscription;
 import org.jproperty.binding.Bindings;
 
 public abstract class BooleanPropertyBase implements BooleanProperty {
@@ -10,13 +11,10 @@ public abstract class BooleanPropertyBase implements BooleanProperty {
     protected ListenersHelper<Boolean> helper = ListenersHelper.empty();
 
     @Override
-    public void addListener(ChangeListener<? super Boolean> listener) {
+    public Subscription subscribe(Subscriber<? super Boolean> listener) {
         this.helper = this.helper.addListener(listener);
-    }
 
-    @Override
-    public void removeListener(ChangeListener<? super Boolean> listener) {
-        this.helper = this.helper.removeListener(listener);
+        return () -> this.helper = this.helper.removeListener(listener);
     }
 
     @Override

@@ -10,21 +10,21 @@ public abstract class ListenersHelper<T> {
         return new Empty<>();
     }
 
-    public abstract ListenersHelper<T> addListener(ChangeListener<? super T> listener);
+    public abstract ListenersHelper<T> addListener(Subscriber<? super T> listener);
 
-    public abstract ListenersHelper<T> removeListener(ChangeListener<? super T> listener);
+    public abstract ListenersHelper<T> removeListener(Subscriber<? super T> listener);
 
     public abstract void fireEvent(ChangeEvent<T> event);
 
     private static class Empty<T> extends ListenersHelper<T> {
 
         @Override
-        public ListenersHelper<T> addListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> addListener(Subscriber<? super T> listener) {
             return listener == null ? this : new SingleChange<>(listener);
         }
 
         @Override
-        public ListenersHelper<T> removeListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> removeListener(Subscriber<? super T> listener) {
             return this;
         }
 
@@ -36,20 +36,20 @@ public abstract class ListenersHelper<T> {
 
     private static class SingleChange<T> extends ListenersHelper<T> {
 
-        private final ChangeListener<? super T> listener;
+        private final Subscriber<? super T> listener;
 
-        public SingleChange(ChangeListener<? super T> listener) {
+        public SingleChange(Subscriber<? super T> listener) {
             this.listener = listener;
         }
 
         @Override
-        public ListenersHelper<T> addListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> addListener(Subscriber<? super T> listener) {
             return listener == null ? this : new Generic<>(
                     Arrays.asList(this.listener, listener));
         }
 
         @Override
-        public ListenersHelper<T> removeListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> removeListener(Subscriber<? super T> listener) {
             return this.listener != listener ? this : new Empty<>();
         }
 
@@ -61,16 +61,16 @@ public abstract class ListenersHelper<T> {
 
     private static class Generic<T> extends ListenersHelper<T> {
 
-        private final List<ChangeListener<? super T>> listeners;
+        private final List<Subscriber<? super T>> listeners;
 
-        public Generic(List<ChangeListener<? super T>> listeners) {
+        public Generic(List<Subscriber<? super T>> listeners) {
             this.listeners = listeners;
         }
 
         @Override
-        public ListenersHelper<T> addListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> addListener(Subscriber<? super T> listener) {
             if (listener == null) return this;
-            final List<ChangeListener<? super T>> listeners =
+            final List<Subscriber<? super T>> listeners =
                     new ArrayList<>(this.listeners);
             listeners.add(listener);
 
@@ -78,11 +78,11 @@ public abstract class ListenersHelper<T> {
         }
 
         @Override
-        public ListenersHelper<T> removeListener(ChangeListener<? super T> listener) {
+        public ListenersHelper<T> removeListener(Subscriber<? super T> listener) {
             if (listener == null || !this.listeners.contains(listener)) {
                 return this;
             }
-            final List<ChangeListener<? super T>> listeners =
+            final List<Subscriber<? super T>> listeners =
                     new ArrayList<>(this.listeners);
             listeners.removeIf(listener::equals);
 
@@ -91,7 +91,7 @@ public abstract class ListenersHelper<T> {
 
         @Override
         public void fireEvent(ChangeEvent<T> event) {
-            for (ChangeListener<? super T> listener : this.listeners) {
+            for (Subscriber<? super T> listener : this.listeners) {
                 listener.onChange(event);
             }
         }

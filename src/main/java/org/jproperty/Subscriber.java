@@ -1,6 +1,6 @@
 package org.jproperty;
 
-public interface ChangeListener<T> {
+public interface Subscriber<T> {
 
     void onChange(ChangeEvent<? extends T> e);
 

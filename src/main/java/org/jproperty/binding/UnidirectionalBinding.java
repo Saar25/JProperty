@@ -1,12 +1,12 @@
 package org.jproperty.binding;
 
 import org.jproperty.ChangeEvent;
-import org.jproperty.ChangeListener;
+import org.jproperty.Subscriber;
 import org.jproperty.Property;
 
 import java.util.Objects;
 
-public abstract class UnidirectionalBinding<T> implements ChangeListener<T> {
+public abstract class UnidirectionalBinding<T> implements Subscriber<T> {
 
     public abstract Object getProperty();
 
