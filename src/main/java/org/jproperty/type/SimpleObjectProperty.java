@@ -1,13 +1,12 @@
 package org.jproperty.type;
 
 import org.jproperty.*;
-import org.jproperty.binding.Bindings;
 
 public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
     protected SubscribersHelper<T> helper = SubscribersHelper.empty();
+
     protected T value;
-    private ReadOnlyProperty<? extends T> bound = null;
 
     public SimpleObjectProperty() {
         this.value = null;
@@ -37,36 +36,6 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
             this.value = value;
             this.helper.fireEvent(event);
         }
-    }
-
-    @Override
-    public void bind(ReadOnlyProperty<? extends T> observable) {
-        unbind();
-        Bindings.bind(this, observable);
-        this.bound = observable;
-    }
-
-    @Override
-    public void unbind() {
-        if (isBound()) {
-            Bindings.unbind(this, this.bound);
-            this.bound = null;
-        }
-    }
-
-    @Override
-    public boolean isBound() {
-        return this.bound != null;
-    }
-
-    @Override
-    public void bindBidirectional(Property<T> observable) {
-        Bindings.bindBidirectional(this, observable);
-    }
-
-    @Override
-    public void unbindBidirectional(Property<T> observable) {
-        Bindings.unbindBidirectional(this, observable);
     }
 
     @Override

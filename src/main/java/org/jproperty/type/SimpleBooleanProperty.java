@@ -1,12 +1,8 @@
 package org.jproperty.type;
 
 import org.jproperty.ChangeEventBase;
-import org.jproperty.ReadOnlyProperty;
-import org.jproperty.binding.Bindings;
 
 public class SimpleBooleanProperty extends BooleanPropertyBase implements BooleanProperty {
-
-    private ReadOnlyProperty<? extends Boolean> bound = null;
 
     private boolean value;
 
@@ -15,26 +11,6 @@ public class SimpleBooleanProperty extends BooleanPropertyBase implements Boolea
 
     public SimpleBooleanProperty(boolean value) {
         this.value = value;
-    }
-
-    @Override
-    public void bind(ReadOnlyProperty<? extends Boolean> observable) {
-        unbind();
-        Bindings.bind(this, observable);
-        this.bound = observable;
-    }
-
-    @Override
-    public void unbind() {
-        if (isBound()) {
-            Bindings.unbind(this, this.bound);
-            this.bound = null;
-        }
-    }
-
-    @Override
-    public boolean isBound() {
-        return this.bound != null;
     }
 
     @Override
