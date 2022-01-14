@@ -5,7 +5,7 @@ import org.jproperty.binding.Bindings;
 
 public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
-    protected ListenersHelper<T> helper = ListenersHelper.empty();
+    protected SubscribersHelper<T> helper = SubscribersHelper.empty();
     protected T value;
     private ReadOnlyProperty<? extends T> bound = null;
 
@@ -19,9 +19,9 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
     @Override
     public Subscription subscribe(Subscriber<? super T> listener) {
-        this.helper = this.helper.addListener(listener);
+        this.helper = this.helper.addSubscriber(listener);
 
-        return () -> this.helper = this.helper.removeListener(listener);
+        return () -> this.helper = this.helper.removeSubscriber(listener);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.jproperty.type;
 
-import org.jproperty.ListenersHelper;
+import org.jproperty.SubscribersHelper;
 import org.jproperty.Property;
 import org.jproperty.Subscriber;
 import org.jproperty.Subscription;
@@ -8,13 +8,13 @@ import org.jproperty.binding.Bindings;
 
 public abstract class NumberPropertyBase implements NumberProperty {
 
-    protected ListenersHelper<Number> helper = ListenersHelper.empty();
+    protected SubscribersHelper<Number> helper = SubscribersHelper.empty();
 
     @Override
     public Subscription subscribe(Subscriber<? super Number> listener) {
-        this.helper = this.helper.addListener(listener);
+        this.helper = this.helper.addSubscriber(listener);
 
-        return () -> this.helper = this.helper.removeListener(listener);
+        return () -> this.helper = this.helper.removeSubscriber(listener);
     }
 
     @Override
