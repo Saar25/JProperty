@@ -1,10 +1,8 @@
 package org.jproperty.type;
 
-import org.jproperty.*;
+import org.jproperty.ChangeEventBase;
 
-public class SimpleObjectProperty<T> implements ObjectProperty<T> {
-
-    protected SubscribersHelper<T> helper = SubscribersHelper.empty();
+public class SimpleObjectProperty<T> extends ObjectPropertyBase<T> implements ObjectProperty<T> {
 
     protected T value;
 
@@ -14,13 +12,6 @@ public class SimpleObjectProperty<T> implements ObjectProperty<T> {
 
     public SimpleObjectProperty(T value) {
         this.value = value;
-    }
-
-    @Override
-    public Subscription subscribe(Subscriber<? super T> listener) {
-        this.helper = this.helper.addSubscriber(listener);
-
-        return () -> this.helper = this.helper.removeSubscriber(listener);
     }
 
     @Override
