@@ -14,16 +14,6 @@ public class SimpleBooleanProperty extends BooleanPropertyBase implements Boolea
     }
 
     @Override
-    public Boolean getValue() {
-        return get();
-    }
-
-    @Override
-    public void setValue(Boolean value) {
-        set(value);
-    }
-
-    @Override
     public boolean get() {
         return this.value;
     }

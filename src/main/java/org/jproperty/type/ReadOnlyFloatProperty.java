@@ -1,11 +1,16 @@
 package org.jproperty.type;
 
-import org.jproperty.ReadOnlyProperty;
-
-public interface ReadOnlyFloatProperty extends ReadOnlyProperty<Number> {
+public interface ReadOnlyFloatProperty extends ReadOnlyNumberProperty {
 
     @Override
-    Float getValue();
+    default Number getValue() {
+        return get();
+    }
+
+    @Override
+    default float getFloatValue() {
+        return get();
+    }
 
     float get();
 

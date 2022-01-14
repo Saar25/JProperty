@@ -14,11 +14,6 @@ public class ConstantBooleanProperty extends ConstantPropertyBase<Boolean> imple
     }
 
     @Override
-    public Boolean getValue() {
-        return get();
-    }
-
-    @Override
     public String toString() {
         return "ConstantBooleanProperty{" + get() + '}';
     }
