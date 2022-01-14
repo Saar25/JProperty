@@ -14,7 +14,7 @@ public abstract class SubscribersHelper<T> {
 
     public abstract SubscribersHelper<T> removeSubscriber(Subscriber<? super T> subscriber);
 
-    public abstract void fireEvent(ChangeEvent<T> event);
+    public abstract void fireEvent(ChangeEvent<? extends T> event);
 
     private static class Empty<T> extends SubscribersHelper<T> {
 
@@ -29,7 +29,7 @@ public abstract class SubscribersHelper<T> {
         }
 
         @Override
-        public void fireEvent(ChangeEvent<T> event) {
+        public void fireEvent(ChangeEvent<? extends T> event) {
 
         }
     }
@@ -54,7 +54,7 @@ public abstract class SubscribersHelper<T> {
         }
 
         @Override
-        public void fireEvent(ChangeEvent<T> event) {
+        public void fireEvent(ChangeEvent<? extends T> event) {
             this.subscriber.onChange(event);
         }
     }
@@ -90,7 +90,7 @@ public abstract class SubscribersHelper<T> {
         }
 
         @Override
-        public void fireEvent(ChangeEvent<T> event) {
+        public void fireEvent(ChangeEvent<? extends T> event) {
             for (Subscriber<? super T> subscriber : this.subscribers) {
                 subscriber.onChange(event);
             }
