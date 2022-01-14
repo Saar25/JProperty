@@ -4,7 +4,7 @@ import org.jproperty.Subscriber;
 import org.jproperty.SubscribersHelper;
 import org.jproperty.Subscription;
 
-public abstract class NumberPropertyBase implements NumberProperty {
+public abstract class NumberPropertyBase implements ReadOnlyNumberProperty {
 
     protected SubscribersHelper<Number> helper = SubscribersHelper.empty();
 

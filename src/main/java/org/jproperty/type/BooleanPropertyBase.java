@@ -4,7 +4,7 @@ import org.jproperty.Subscriber;
 import org.jproperty.SubscribersHelper;
 import org.jproperty.Subscription;
 
-public abstract class BooleanPropertyBase implements BooleanProperty {
+public abstract class BooleanPropertyBase implements ReadOnlyBooleanProperty {
 
     protected SubscribersHelper<Boolean> helper = SubscribersHelper.empty();
 

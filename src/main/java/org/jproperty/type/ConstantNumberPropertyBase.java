@@ -1,8 +1,6 @@
 package org.jproperty.type;
 
-import org.jproperty.ReadOnlyProperty;
-
-public abstract class ConstantNumberPropertyBase extends ConstantPropertyBase<Number> implements ReadOnlyProperty<Number> {
+public abstract class ConstantNumberPropertyBase extends ConstantPropertyBase<Number> implements ReadOnlyNumberProperty {
 
     public int getIntValue() {
         return getValue().intValue();
