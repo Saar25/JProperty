@@ -6,7 +6,7 @@ Java utility library that provides properties, like JavaFX but simplified
 <dependency>
     <groupId>com.github.saar25</groupId>
     <artifactId>jproperty</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -33,31 +33,12 @@ intProperty.set(5); // Prints output
 intProperty.set(5); // Does not print output
 intProperty.set(1); // Prints output
 ```
-#### Binding properties to one another
+#### Building up expressions
 ```java
-System.out.println(intProperty.get()); // 8
-System.out.println(floatProperty.get()); // 1.7f
+final IntProperty aProperty = new SimpleIntProperty(8);
+final IntProperty bProperty = new SimpleIntProperty(3);
 
-intProperty.bind(floatProperty)
-System.out.println(intProperty.get()); // 1
+final IntExpression expression = IntExpressions.add(aProperty, bProperty);
 
-floatProperty.set(9.4f)
-System.out.println(intProperty.get()); // 9
-```
-#### Bidirectional binding
-```java
-System.out.println(intProperty.get()); // 8
-System.out.println(floatProperty.get()); // 1.7
-
-intProperty.bindBidirectional(floatProperty);
-System.out.println(intProperty.get()); // 1
-System.out.println(floatProperty.get()); // 1.7
-
-floatProperty.set(4f);
-System.out.println(intProperty.get()); // 4
-System.out.println(floatProperty.get()); // 4.0
-
-intProperty.set(17);
-System.out.println(intProperty.get()); // 17 
-System.out.println(floatProperty.get()); // 17.0
+System.out.println(a.get()) // Prints 11
 ```
