@@ -1,21 +1,21 @@
-package org.jproperty.property;
+package org.jproperty.value;
 
 import org.jproperty.ChangeListener;
 import org.jproperty.InvalidationListener;
 import org.jproperty.ListenersHelper;
-import org.jproperty.value.ObservableBooleanValue;
+import org.jproperty.ObservableValue;
 
-public abstract class BooleanPropertyBase implements ObservableBooleanValue {
+public abstract class ObservableValueBase<T> implements ObservableValue<T> {
 
-    private final ListenersHelper<Boolean> helper = ListenersHelper.empty();
+    private final ListenersHelper<T> helper = ListenersHelper.empty();
 
     @Override
-    public final void addListener(ChangeListener<? super Boolean> listener) {
+    public final void addListener(ChangeListener<? super T> listener) {
         this.helper.addListener(listener);
     }
 
     @Override
-    public final void removeListener(ChangeListener<? super Boolean> listener) {
+    public final void removeListener(ChangeListener<? super T> listener) {
         this.helper.removeListener(listener);
     }
 
@@ -29,7 +29,7 @@ public abstract class BooleanPropertyBase implements ObservableBooleanValue {
         this.helper.removeListener(listener);
     }
 
-    protected final void fireChangeEvent(Boolean oldValue) {
+    protected final void fireChangeEvent(T oldValue) {
         this.helper.fireChangeEvent(this, oldValue);
     }
 }

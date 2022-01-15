@@ -1,6 +1,8 @@
 package org.jproperty.property;
 
-public class SimpleFloatProperty extends NumberPropertyBase implements FloatProperty {
+import org.jproperty.value.ObservableValueBase;
+
+public class SimpleFloatProperty extends ObservableValueBase<Number> implements FloatProperty {
 
     private float value;
 

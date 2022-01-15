@@ -1,6 +1,8 @@
 package org.jproperty.property;
 
-public class SimpleObjectProperty<T> extends ObjectPropertyBase<T> implements ObjectProperty<T> {
+import org.jproperty.value.ObservableValueBase;
+
+public class SimpleObjectProperty<T> extends ObservableValueBase<T> implements ObjectProperty<T> {
 
     protected T value;
 

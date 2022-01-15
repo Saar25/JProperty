@@ -1,6 +1,8 @@
 package org.jproperty.property;
 
-public class SimpleBooleanProperty extends BooleanPropertyBase implements BooleanProperty {
+import org.jproperty.value.ObservableValueBase;
+
+public class SimpleBooleanProperty extends ObservableValueBase<Boolean> implements BooleanProperty {
 
     private boolean value;
 

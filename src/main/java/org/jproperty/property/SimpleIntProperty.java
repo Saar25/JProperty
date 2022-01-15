@@ -1,6 +1,8 @@
 package org.jproperty.property;
 
-public class SimpleIntProperty extends NumberPropertyBase implements IntProperty {
+import org.jproperty.value.ObservableValueBase;
+
+public class SimpleIntProperty extends ObservableValueBase<Number> implements IntProperty {
 
     private int value;
 
