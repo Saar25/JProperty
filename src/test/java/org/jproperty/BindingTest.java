@@ -1,16 +1,15 @@
 package org.jproperty;
 
-import org.jproperty.expression.Expression;
-import org.jproperty.expression.Expressions;
-import org.jproperty.expression.FloatExpression;
-import org.jproperty.expression.IntExpression;
+import org.jproperty.binding.Bindings;
+import org.jproperty.binding.FloatBinding;
+import org.jproperty.binding.IntegerBinding;
 import org.jproperty.property.ObjectProperty;
 import org.jproperty.property.SimpleObjectProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ExpressionTest {
+public class BindingTest {
 
     private ObjectProperty<String> stringProperty;
 
@@ -23,7 +22,7 @@ public class ExpressionTest {
     public void testMap() {
         this.stringProperty.setValue("This is a string");
 
-        final Expression<String> expression = Expressions.map(this.stringProperty, s -> s.substring(5));
+        final Binding<String> expression = Bindings.map(this.stringProperty, s -> s.substring(5));
 
         Assertions.assertEquals(expression.getValue(), "is a string");
     }
@@ -32,7 +31,7 @@ public class ExpressionTest {
     public void testMapUpdates() {
         this.stringProperty.setValue("This is a string");
 
-        final Expression<String> expression = Expressions.map(this.stringProperty, s -> s.substring(5));
+        final Binding<String> expression = Bindings.map(this.stringProperty, s -> s.substring(5));
 
         this.stringProperty.setValue("This is another string");
 
@@ -43,7 +42,7 @@ public class ExpressionTest {
     public void testMapToInt() {
         this.stringProperty.setValue("This is a string");
 
-        final IntExpression expression = Expressions.mapToInt(this.stringProperty, String::length);
+        final IntegerBinding expression = Bindings.mapToInt(this.stringProperty, String::length);
 
         Assertions.assertEquals(expression.getValue(), 16);
     }
@@ -52,7 +51,7 @@ public class ExpressionTest {
     public void testMapToIntUpdates() {
         this.stringProperty.setValue("This is a string");
 
-        final IntExpression expression = Expressions.mapToInt(this.stringProperty, String::length);
+        final IntegerBinding expression = Bindings.mapToInt(this.stringProperty, String::length);
 
         this.stringProperty.setValue("This is another string");
 
@@ -63,7 +62,7 @@ public class ExpressionTest {
     public void testMapToFloat() {
         this.stringProperty.setValue("This is a string");
 
-        final FloatExpression expression = Expressions.mapToFloat(this.stringProperty, s -> s.length() * 3.5f);
+        final FloatBinding expression = Bindings.mapToFloat(this.stringProperty, s -> s.length() * 3.5f);
 
         Assertions.assertEquals(expression.getValue(), 56f);
     }
@@ -72,7 +71,7 @@ public class ExpressionTest {
     public void testMapToFloatUpdates() {
         this.stringProperty.setValue("This is a string");
 
-        final FloatExpression expression = Expressions.mapToFloat(this.stringProperty, s -> s.length() * 3.5f);
+        final FloatBinding expression = Bindings.mapToFloat(this.stringProperty, s -> s.length() * 3.5f);
 
         this.stringProperty.setValue("This is another string");
 
@@ -83,9 +82,9 @@ public class ExpressionTest {
     public void testChainedMap() {
         this.stringProperty.setValue("This is a string");
 
-        final Expression<String> expression1 = Expressions.map(this.stringProperty, s -> s.substring(0, 5));
-        final Expression<String> expression2 = Expressions.map(expression1, s -> s + "isn't a string");
-        final IntExpression expression3 = Expressions.mapToInt(expression2, String::length);
+        final Binding<String> expression1 = Bindings.map(this.stringProperty, s -> s.substring(0, 5));
+        final Binding<String> expression2 = Bindings.map(expression1, s -> s + "isn't a string");
+        final IntegerBinding expression3 = Bindings.mapToInt(expression2, String::length);
 
         Assertions.assertEquals(expression1.getValue(), "This ");
         Assertions.assertEquals(expression2.getValue(), "This isn't a string");
@@ -96,9 +95,9 @@ public class ExpressionTest {
     public void testChainedMapUpdates() {
         this.stringProperty.setValue("This is a string");
 
-        final Expression<String> expression1 = Expressions.map(this.stringProperty, s -> s.substring(0, 5));
-        final Expression<String> expression2 = Expressions.map(expression1, s -> s + "isn't a string");
-        final IntExpression expression3 = Expressions.mapToInt(expression2, String::length);
+        final Binding<String> expression1 = Bindings.map(this.stringProperty, s -> s.substring(0, 5));
+        final Binding<String> expression2 = Bindings.map(expression1, s -> s + "isn't a string");
+        final IntegerBinding expression3 = Bindings.mapToInt(expression2, String::length);
 
         this.stringProperty.setValue("Make it work");
 

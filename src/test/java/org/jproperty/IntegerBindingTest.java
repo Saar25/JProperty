@@ -1,14 +1,14 @@
 package org.jproperty;
 
-import org.jproperty.expression.IntExpression;
-import org.jproperty.expression.IntExpressions;
+import org.jproperty.binding.Bindings;
+import org.jproperty.binding.IntegerBinding;
 import org.jproperty.property.IntegerProperty;
 import org.jproperty.property.SimpleIntegerProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class IntExpressionTest {
+public class IntegerBindingTest {
 
     private IntegerProperty integerProperty;
     private IntegerProperty otherProperty;
@@ -24,7 +24,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.add(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.add(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), 7 + 3);
     }
@@ -34,7 +34,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.add(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.add(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -50,7 +50,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.sub(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.sub(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), 7 - 3);
     }
@@ -60,7 +60,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.sub(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.sub(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -76,7 +76,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.mul(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.mul(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), 7 * 3);
     }
@@ -86,7 +86,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.mul(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.mul(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -102,7 +102,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.div(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.div(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), 7 / 3);
     }
@@ -112,7 +112,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.div(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.div(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -129,7 +129,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.sum(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.sum(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), 7 + 3);
     }
@@ -139,7 +139,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.sum(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.sum(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -155,7 +155,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.max(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.max(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), Math.max(7, 3));
     }
@@ -165,7 +165,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.max(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.max(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 
@@ -181,7 +181,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.min(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.min(this.integerProperty, this.otherProperty);
 
         Assertions.assertEquals(expression.get(), Math.min(7, 3));
     }
@@ -191,7 +191,7 @@ public class IntExpressionTest {
         this.integerProperty.set(7);
         this.otherProperty.set(3);
 
-        final IntExpression expression = IntExpressions.min(this.integerProperty, this.otherProperty);
+        final IntegerBinding expression = Bindings.min(this.integerProperty, this.otherProperty);
 
         this.integerProperty.set(11);
 

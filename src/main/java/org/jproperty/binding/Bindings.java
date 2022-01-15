@@ -36,7 +36,7 @@ public final class Bindings {
         return new IntegerBinding(a, b) {
             @Override
             protected int compute() {
-                return a.get() + b.get();
+                return a.get() - b.get();
             }
         };
     }
@@ -100,7 +100,7 @@ public final class Bindings {
         return new IntegerBinding(values) {
             @Override
             protected int compute() {
-                int max = 0;
+                int max = values[0].get();
                 for (ObservableIntegerValue value : values) {
                     max = Math.max(max, value.get());
                 }
@@ -113,7 +113,7 @@ public final class Bindings {
         return new IntegerBinding(values) {
             @Override
             protected int compute() {
-                int min = 0;
+                int min = values[0].get();
                 for (ObservableIntegerValue value : values) {
                     min = Math.min(min, value.get());
                 }
@@ -169,7 +169,7 @@ public final class Bindings {
         return new FloatBinding(a, b) {
             @Override
             protected float compute() {
-                return a.get() + b.get();
+                return a.get() - b.get();
             }
         };
     }
@@ -233,7 +233,7 @@ public final class Bindings {
         return new FloatBinding(values) {
             @Override
             protected float compute() {
-                float min = 0;
+                float min = values[0].get();
                 for (ObservableFloatValue value : values) {
                     min = Math.min(min, value.get());
                 }
@@ -259,7 +259,7 @@ public final class Bindings {
         return new FloatBinding(values) {
             @Override
             protected float compute() {
-                float max = 0;
+                float max = values[0].get();
                 for (ObservableFloatValue value : values) {
                     max = Math.max(max, value.get());
                 }
