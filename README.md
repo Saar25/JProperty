@@ -1,11 +1,11 @@
 # JProperty
-Java utility library that provides properties, like JavaFX but simplified
+Java utility library that provides observable values, bindings with lazy evaluation and more. like JavaFX but simplified
 
 ## Using JProperty with maven
 ```xml
 <dependency>
     <groupId>com.github.saar25</groupId>
-    <artifactId>jproperty</artifactId>
+    <artifactId>JProperty</artifactId>
     <version>1.1.2</version>
 </dependency>
 ```
@@ -27,7 +27,7 @@ final ReadOnlyFloatProperty readOnlyFloatProperty = new SimpleFloatProperty();
 intProperty.addListener(e -> {
     System.out.println("Changed" +
             " from " + e.getOldValue() +
-            " to " + e.getNewValue());
+            " to " + intProperty.get());
 });
 intProperty.set(5); // Prints output
 intProperty.set(5); // Does not print output
@@ -38,7 +38,7 @@ intProperty.set(1); // Prints output
 final IntProperty aProperty = new SimpleIntProperty(8);
 final IntProperty bProperty = new SimpleIntProperty(3);
 
-final IntExpression expression = IntExpressions.add(aProperty, bProperty);
+final IntBinding expression = Bindings.add(aProperty, bProperty);
 
 System.out.println(a.get()) // Prints 11
 ```
