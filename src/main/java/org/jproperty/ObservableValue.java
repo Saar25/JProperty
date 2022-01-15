@@ -1,6 +1,6 @@
 package org.jproperty;
 
-public interface ObservableValue<T> {
+public interface ObservableValue<T> extends Observable {
 
     void addListener(ChangeListener<? super T> listener);
 

@@ -1,7 +1,5 @@
 package org.jproperty.property;
 
-import org.jproperty.ChangeEvent;
-
 public class SimpleFloatProperty extends NumberPropertyBase implements FloatProperty {
 
     private float value;
@@ -21,10 +19,10 @@ public class SimpleFloatProperty extends NumberPropertyBase implements FloatProp
     @Override
     public void set(float value) {
         if (get() != value) {
-            final ChangeEvent<Number> event = new ChangeEvent<>(this, this.value, value);
-
+            float oldValue = this.value;
             this.value = value;
-            this.helper.fireEvent(event);
+
+            fireChangeEvent(oldValue);
         }
     }
 

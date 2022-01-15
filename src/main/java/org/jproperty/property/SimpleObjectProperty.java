@@ -1,7 +1,5 @@
 package org.jproperty.property;
 
-import org.jproperty.ChangeEvent;
-
 public class SimpleObjectProperty<T> extends ObjectPropertyBase<T> implements ObjectProperty<T> {
 
     protected T value;
@@ -15,17 +13,17 @@ public class SimpleObjectProperty<T> extends ObjectPropertyBase<T> implements Ob
     }
 
     @Override
-    public T getValue() {
+    public T get() {
         return this.value;
     }
 
     @Override
-    public void setValue(T value) {
-        if (this.value != value) {
-            final ChangeEvent<T> event = new ChangeEvent<>(this, this.value, value);
-
+    public void set(T value) {
+        if (get() != value) {
+            T oldValue = this.value;
             this.value = value;
-            this.helper.fireEvent(event);
+
+            fireChangeEvent(oldValue);
         }
     }
 

@@ -1,7 +1,5 @@
 package org.jproperty.property;
 
-import org.jproperty.ChangeEvent;
-
 public class SimpleIntProperty extends NumberPropertyBase implements IntProperty {
 
     private int value;
@@ -21,10 +19,10 @@ public class SimpleIntProperty extends NumberPropertyBase implements IntProperty
     @Override
     public void set(int value) {
         if (get() != value) {
-            final ChangeEvent<Number> event = new ChangeEvent<>(this, this.value, value);
-
+            int oldValue = this.value;
             this.value = value;
-            this.helper.fireEvent(event);
+
+            fireChangeEvent(oldValue);
         }
     }
 

@@ -1,7 +1,5 @@
 package org.jproperty.property;
 
-import org.jproperty.ChangeEvent;
-
 public class SimpleBooleanProperty extends BooleanPropertyBase implements BooleanProperty {
 
     private boolean value;
@@ -21,10 +19,10 @@ public class SimpleBooleanProperty extends BooleanPropertyBase implements Boolea
     @Override
     public void set(boolean value) {
         if (get() != value) {
-            final ChangeEvent<Boolean> event = new ChangeEvent<>(this, this.value, value);
-
+            boolean oldValue = this.value;
             this.value = value;
-            this.helper.fireEvent(event);
+
+            fireChangeEvent(oldValue);
         }
     }
 
