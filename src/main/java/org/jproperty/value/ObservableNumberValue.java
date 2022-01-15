@@ -7,24 +7,14 @@ public interface ObservableNumberValue extends ObservableValue<Number> {
     @Override
     Number getValue();
 
-    default byte getByteValue() {
-        return getValue().byteValue();
-    }
+    byte getByteValue();
 
-    default int getIntValue() {
-        return getValue().intValue();
-    }
+    int getIntValue();
 
-    default float getFloatValue() {
-        return getValue().floatValue();
-    }
+    float getFloatValue();
 
-    default long getLongValue() {
-        return getValue().longValue();
-    }
+    long getLongValue();
 
-    default double getDoubleValue() {
-        return getValue().doubleValue();
-    }
+    double getDoubleValue();
 
 }
