@@ -2,7 +2,7 @@ package org.jproperty.property;
 
 import org.jproperty.value.ObservableIntegerValue;
 
-public interface IntProperty extends ObservableIntegerValue, NumberProperty {
+public interface IntegerProperty extends ObservableIntegerValue, NumberProperty {
 
     @Override
     default void setValue(Number value) {

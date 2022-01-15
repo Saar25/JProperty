@@ -2,14 +2,14 @@ package org.jproperty.property;
 
 import org.jproperty.value.ObservableValueBase;
 
-public class SimpleIntProperty extends ObservableValueBase<Number> implements IntProperty {
+public class SimpleIntegerProperty extends ObservableValueBase<Number> implements IntegerProperty {
 
     private int value;
 
-    public SimpleIntProperty() {
+    public SimpleIntegerProperty() {
     }
 
-    public SimpleIntProperty(int value) {
+    public SimpleIntegerProperty(int value) {
         this.value = value;
     }
 

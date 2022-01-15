@@ -2,11 +2,11 @@ package org.jproperty.constant;
 
 import org.jproperty.value.ObservableIntegerValue;
 
-public class ConstantIntProperty extends ConstantPropertyBase<Number> implements ObservableIntegerValue {
+public class ConstantIntegerProperty extends ConstantPropertyBase<Number> implements ObservableIntegerValue {
 
     private final int value;
 
-    public ConstantIntProperty(int value) {
+    public ConstantIntegerProperty(int value) {
         this.value = value;
     }
 

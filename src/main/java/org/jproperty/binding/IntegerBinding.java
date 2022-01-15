@@ -5,7 +5,7 @@ import org.jproperty.Observable;
 import org.jproperty.value.ObservableIntegerValue;
 import org.jproperty.value.ObservableValueBase;
 
-public abstract class IntBinding extends ObservableValueBase<Number> implements Binding<Number>, ObservableIntegerValue {
+public abstract class IntegerBinding extends ObservableValueBase<Number> implements Binding<Number>, ObservableIntegerValue {
 
     private final InvalidationObserver observer = new InvalidationObserver(this);
     private final Observable[] dependencies;
@@ -13,7 +13,7 @@ public abstract class IntBinding extends ObservableValueBase<Number> implements 
     private int value;
     private boolean valid = false;
 
-    public IntBinding(Observable... dependencies) {
+    public IntegerBinding(Observable... dependencies) {
         this.dependencies = dependencies;
         bind(this.dependencies);
     }

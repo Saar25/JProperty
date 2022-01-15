@@ -10,8 +10,8 @@ public final class Bindings {
                 getClass().getSimpleName());
     }
 
-    public static IntBinding add(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntBinding(a, b) {
+    public static IntegerBinding add(ObservableIntegerValue a, ObservableIntegerValue b) {
+        return new IntegerBinding(a, b) {
             @Override
             protected int compute() {
                 return a.get() + b.get();
@@ -19,8 +19,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding sub(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntBinding(a, b) {
+    public static IntegerBinding sub(ObservableIntegerValue a, ObservableIntegerValue b) {
+        return new IntegerBinding(a, b) {
             @Override
             protected int compute() {
                 return a.get() + b.get();
@@ -28,8 +28,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding mul(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntBinding(a, b) {
+    public static IntegerBinding mul(ObservableIntegerValue a, ObservableIntegerValue b) {
+        return new IntegerBinding(a, b) {
             @Override
             protected int compute() {
                 return a.get() * b.get();
@@ -37,8 +37,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding div(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntBinding(a, b) {
+    public static IntegerBinding div(ObservableIntegerValue a, ObservableIntegerValue b) {
+        return new IntegerBinding(a, b) {
             @Override
             protected int compute() {
                 return a.get() / b.get();
@@ -46,8 +46,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding sum(ObservableIntegerValue... values) {
-        return new IntBinding(values) {
+    public static IntegerBinding sum(ObservableIntegerValue... values) {
+        return new IntegerBinding(values) {
             @Override
             protected int compute() {
                 int sum = 0;
@@ -59,8 +59,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding max(ObservableIntegerValue... values) {
-        return new IntBinding(values) {
+    public static IntegerBinding max(ObservableIntegerValue... values) {
+        return new IntegerBinding(values) {
             @Override
             protected int compute() {
                 int max = 0;
@@ -72,8 +72,8 @@ public final class Bindings {
         };
     }
 
-    public static IntBinding min(ObservableIntegerValue... values) {
-        return new IntBinding(values) {
+    public static IntegerBinding min(ObservableIntegerValue... values) {
+        return new IntegerBinding(values) {
             @Override
             protected int compute() {
                 int min = 0;
