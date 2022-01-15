@@ -2,8 +2,8 @@ package org.jproperty;
 
 import org.jproperty.expression.IntExpression;
 import org.jproperty.expression.IntExpressions;
-import org.jproperty.type.IntProperty;
-import org.jproperty.type.SimpleIntProperty;
+import org.jproperty.property.IntProperty;
+import org.jproperty.property.SimpleIntProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

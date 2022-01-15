@@ -2,8 +2,8 @@ package org.jproperty;
 
 import org.jproperty.expression.FloatExpression;
 import org.jproperty.expression.FloatExpressions;
-import org.jproperty.type.FloatProperty;
-import org.jproperty.type.SimpleFloatProperty;
+import org.jproperty.property.FloatProperty;
+import org.jproperty.property.SimpleFloatProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
