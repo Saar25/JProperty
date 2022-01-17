@@ -6,7 +6,7 @@ Java utility library that provides observable values, bindings with lazy evaluat
 <dependency>
     <groupId>com.github.saar25</groupId>
     <artifactId>JProperty</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 
