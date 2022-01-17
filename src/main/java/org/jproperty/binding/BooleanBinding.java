@@ -3,11 +3,9 @@ package org.jproperty.binding;
 import org.jproperty.Binding;
 import org.jproperty.Observable;
 import org.jproperty.value.ObservableBooleanValue;
-import org.jproperty.value.ObservableValueBase;
 
-public abstract class BooleanBinding extends ObservableValueBase<Boolean> implements Binding<Boolean>, ObservableBooleanValue {
+public abstract class BooleanBinding extends BindingBase<Boolean> implements Binding<Boolean>, ObservableBooleanValue {
 
-    private final InvalidationObserver observer = new InvalidationObserver(this);
     private final Observable[] dependencies;
 
     private boolean value;
@@ -16,18 +14,6 @@ public abstract class BooleanBinding extends ObservableValueBase<Boolean> implem
     public BooleanBinding(Observable... dependencies) {
         this.dependencies = dependencies;
         bind(this.dependencies);
-    }
-
-    private void bind(Observable... dependencies) {
-        for (Observable dependency : dependencies) {
-            dependency.addListener(this.observer);
-        }
-    }
-
-    private void unbind(Observable... dependencies) {
-        for (Observable dependency : dependencies) {
-            dependency.removeListener(this.observer);
-        }
     }
 
     @Override
