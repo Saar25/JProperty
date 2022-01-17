@@ -5,6 +5,7 @@ import org.jproperty.constant.ConstantFloat;
 import org.jproperty.constant.ConstantInteger;
 import org.jproperty.value.ObservableFloatValue;
 import org.jproperty.value.ObservableIntegerValue;
+import org.jproperty.value.ObservableNumberValue;
 
 import java.util.function.Function;
 
@@ -488,10 +489,10 @@ public final class Bindings {
         };
     }
 
-    public static <T> ObjectBinding<T> flatMap(ObservableValue<T> value, Function<T, ObservableValue<T>> mapper) {
-        return new ObjectBinding<T>() {
+    public static <I, O> ObjectBinding<O> flatMap(ObservableValue<I> value, Function<I, ObservableValue<O>> mapper) {
+        return new ObjectBinding<O>() {
 
-            private ObservableValue<T> observable;
+            private ObservableValue<O> observable;
 
             {
                 this.observable = mapper.apply(value.getValue());
@@ -499,12 +500,64 @@ public final class Bindings {
             }
 
             @Override
-            protected T compute() {
+            protected O compute() {
                 unbind(this.observable);
                 this.observable = mapper.apply(value.getValue());
                 bind(this.observable);
 
                 return this.observable.getValue();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value, this.observable);
+            }
+        };
+    }
+
+    public static <I> IntegerBinding flatMapToInteger(ObservableValue<I> value, Function<I, ObservableNumberValue> mapper) {
+        return new IntegerBinding() {
+
+            private ObservableNumberValue observable;
+
+            {
+                this.observable = mapper.apply(value.getValue());
+                bind(value, this.observable);
+            }
+
+            @Override
+            protected int compute() {
+                unbind(this.observable);
+                this.observable = mapper.apply(value.getValue());
+                bind(this.observable);
+
+                return this.observable.getIntValue();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value, this.observable);
+            }
+        };
+    }
+
+    public static <I> FloatBinding flatMapToFloat(ObservableValue<I> value, Function<I, ObservableNumberValue> mapper) {
+        return new FloatBinding() {
+
+            private ObservableNumberValue observable;
+
+            {
+                this.observable = mapper.apply(value.getValue());
+                bind(value, this.observable);
+            }
+
+            @Override
+            protected float compute() {
+                unbind(this.observable);
+                this.observable = mapper.apply(value.getValue());
+                bind(this.observable);
+
+                return this.observable.getFloatValue();
             }
 
             @Override

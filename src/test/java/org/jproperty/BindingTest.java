@@ -6,6 +6,8 @@ import org.jproperty.binding.IntegerBinding;
 import org.jproperty.binding.ObjectBinding;
 import org.jproperty.property.ObjectProperty;
 import org.jproperty.property.SimpleObjectProperty;
+import org.jproperty.value.ObservableFloatValue;
+import org.jproperty.value.ObservableIntegerValue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -129,5 +131,57 @@ public class BindingTest {
         this.otherProperty.set("Hello world");
 
         Assertions.assertEquals(binding.getValue(), "Hello world");
+    }
+
+    @Test
+    public void testFlatMapToInteger() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObservableIntegerValue otherLength = Bindings.mapToInt(this.otherProperty, String::length);
+
+        final ObservableIntegerValue binding = Bindings.flatMapToInteger(this.stringProperty, v -> otherLength);
+
+        Assertions.assertEquals(binding.getValue(), "This is another string".length());
+    }
+
+    @Test
+    public void testFlatMapToIntegerUpdates() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObservableIntegerValue otherLength = Bindings.mapToInt(this.otherProperty, String::length);
+
+        final ObservableIntegerValue binding = Bindings.flatMapToInteger(this.stringProperty, v -> otherLength);
+
+        this.otherProperty.set("Hello world");
+
+        Assertions.assertEquals(binding.getValue(), "Hello world".length());
+    }
+
+    @Test
+    public void testFlatMapToFloat() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObservableFloatValue otherLength = Bindings.mapToFloat(this.otherProperty, a -> 5.5f);
+
+        final ObservableFloatValue binding = Bindings.flatMapToFloat(this.stringProperty, v -> otherLength);
+
+        Assertions.assertEquals(binding.getValue(), 5.5f);
+    }
+
+    @Test
+    public void testFlatMapToFloatUpdates() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObservableFloatValue otherLength = Bindings.mapToFloat(this.otherProperty, v -> 5.5f);
+
+        final ObservableFloatValue binding = Bindings.flatMapToFloat(this.stringProperty, v -> otherLength);
+
+        this.otherProperty.set("Hello world");
+
+        Assertions.assertEquals(binding.getValue(), 5.5f);
     }
 }
