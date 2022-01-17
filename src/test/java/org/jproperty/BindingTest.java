@@ -3,6 +3,7 @@ package org.jproperty;
 import org.jproperty.binding.Bindings;
 import org.jproperty.binding.FloatBinding;
 import org.jproperty.binding.IntegerBinding;
+import org.jproperty.binding.ObjectBinding;
 import org.jproperty.property.ObjectProperty;
 import org.jproperty.property.SimpleObjectProperty;
 import org.junit.jupiter.api.Assertions;
@@ -12,10 +13,12 @@ import org.junit.jupiter.api.Test;
 public class BindingTest {
 
     private ObjectProperty<String> stringProperty;
+    private ObjectProperty<String> otherProperty;
 
     @BeforeEach
     public void init() {
         this.stringProperty = new SimpleObjectProperty<>();
+        this.otherProperty = new SimpleObjectProperty<>();
     }
 
     @Test
@@ -104,5 +107,27 @@ public class BindingTest {
         Assertions.assertEquals(expression1.getValue(), "Make ");
         Assertions.assertEquals(expression2.getValue(), "Make isn't a string");
         Assertions.assertEquals(expression3.getValue(), 19);
+    }
+
+    @Test
+    public void testFlatMap() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObjectBinding<String> binding = Bindings.flatMap(this.stringProperty, v -> this.otherProperty);
+
+        Assertions.assertEquals(binding.getValue(), "This is another string");
+    }
+
+    @Test
+    public void testFlatMapUpdates() {
+        this.stringProperty.setValue("This is a string");
+        this.otherProperty.setValue("This is another string");
+
+        final ObjectBinding<String> binding = Bindings.flatMap(this.stringProperty, v -> this.otherProperty);
+
+        this.otherProperty.set("Hello world");
+
+        Assertions.assertEquals(binding.getValue(), "Hello world");
     }
 }

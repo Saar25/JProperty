@@ -487,4 +487,30 @@ public final class Bindings {
             }
         };
     }
+
+    public static <T> ObjectBinding<T> flatMap(ObservableValue<T> value, Function<T, ObservableValue<T>> mapper) {
+        return new ObjectBinding<T>() {
+
+            private ObservableValue<T> observable;
+
+            {
+                this.observable = mapper.apply(value.getValue());
+                bind(value, this.observable);
+            }
+
+            @Override
+            protected T compute() {
+                unbind(this.observable);
+                this.observable = mapper.apply(value.getValue());
+                bind(this.observable);
+
+                return this.observable.getValue();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value, this.observable);
+            }
+        };
+    }
 }
