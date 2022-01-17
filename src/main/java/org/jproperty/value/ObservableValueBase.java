@@ -7,7 +7,7 @@ import org.jproperty.ObservableValue;
 
 public abstract class ObservableValueBase<T> implements ObservableValue<T> {
 
-    private final ListenersHelper<T> helper = ListenersHelper.empty();
+    private final ListenersHelper<T> helper = new ListenersHelper<>();
 
     @Override
     public final void addListener(ChangeListener<? super T> listener) {
