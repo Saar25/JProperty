@@ -86,7 +86,7 @@ public abstract class InvalidationListenersHelper {
             }
             final List<InvalidationListener> listeners =
                     new ArrayList<>(this.listeners);
-            listeners.removeIf(listener::equals);
+            listeners.remove(listener);
 
             return new Generic(listeners);
         }

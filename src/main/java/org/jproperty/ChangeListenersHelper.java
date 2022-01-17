@@ -15,7 +15,7 @@ public abstract class ChangeListenersHelper<T> {
 
     public abstract ChangeListenersHelper<T> removeListener(ChangeListener<? super T> listener);
 
-    public abstract void fireEvent(ChangeEvent<? extends T> event);
+    public abstract void fireEvent(ObservableValue<T> observable, T oldValue);
 
     private static class Empty<T> extends ChangeListenersHelper<T> {
 
@@ -32,7 +32,7 @@ public abstract class ChangeListenersHelper<T> {
         }
 
         @Override
-        public void fireEvent(ChangeEvent<? extends T> event) {
+        public void fireEvent(ObservableValue<T> observable, T oldValue) {
 
         }
     }
@@ -57,7 +57,9 @@ public abstract class ChangeListenersHelper<T> {
         }
 
         @Override
-        public void fireEvent(ChangeEvent<? extends T> event) {
+        public void fireEvent(ObservableValue<T> observable, T oldValue) {
+            final ChangeEvent<T> event = new ChangeEvent<>(
+                    observable, oldValue, observable.getValue());
             this.listener.onChange(event);
         }
     }
@@ -87,13 +89,16 @@ public abstract class ChangeListenersHelper<T> {
             }
             final List<ChangeListener<? super T>> listeners =
                     new ArrayList<>(this.listeners);
-            listeners.removeIf(listener::equals);
+            listeners.remove(listener);
 
             return new Generic<>(listeners);
         }
 
         @Override
-        public void fireEvent(ChangeEvent<? extends T> event) {
+        public void fireEvent(ObservableValue<T> observable, T oldValue) {
+            final ChangeEvent<T> event = new ChangeEvent<>(
+                    observable, oldValue, observable.getValue());
+
             for (ChangeListener<? super T> listener : this.listeners) {
                 listener.onChange(event);
             }

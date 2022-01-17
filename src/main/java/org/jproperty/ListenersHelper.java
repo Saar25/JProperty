@@ -35,7 +35,7 @@ public class ListenersHelper<T> {
     }
 
     public void fireChangeEvent(ObservableValue<T> observable, T oldValue) {
-        this.changeHelper.fireEvent(new ChangeEvent<>(observable, oldValue));
+        this.changeHelper.fireEvent(observable, oldValue);
         this.invalidationHelper.fireEvent(observable);
 
     }
