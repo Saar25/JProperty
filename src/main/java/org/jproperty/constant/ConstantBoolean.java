@@ -2,11 +2,11 @@ package org.jproperty.constant;
 
 import org.jproperty.value.ObservableBooleanValue;
 
-public class ConstantBooleanProperty extends ConstantPropertyBase<Boolean> implements ObservableBooleanValue {
+public class ConstantBoolean extends ConstantValueBase<Boolean> implements ObservableBooleanValue {
 
     private final boolean value;
 
-    public ConstantBooleanProperty(boolean value) {
+    public ConstantBoolean(boolean value) {
         this.value = value;
     }
 
@@ -17,6 +17,6 @@ public class ConstantBooleanProperty extends ConstantPropertyBase<Boolean> imple
 
     @Override
     public String toString() {
-        return "ConstantBooleanProperty{" + get() + '}';
+        return "ConstantBoolean{" + get() + '}';
     }
 }

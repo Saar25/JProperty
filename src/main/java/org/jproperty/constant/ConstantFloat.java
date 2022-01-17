@@ -2,11 +2,11 @@ package org.jproperty.constant;
 
 import org.jproperty.value.ObservableFloatValue;
 
-public class ConstantFloatProperty extends ConstantPropertyBase<Number> implements ObservableFloatValue {
+public class ConstantFloat extends ConstantValueBase<Number> implements ObservableFloatValue {
 
     private final float value;
 
-    public ConstantFloatProperty(float value) {
+    public ConstantFloat(float value) {
         this.value = value;
     }
 
@@ -17,6 +17,6 @@ public class ConstantFloatProperty extends ConstantPropertyBase<Number> implemen
 
     @Override
     public String toString() {
-        return "ConstantFloatProperty{" + get() + '}';
+        return "ConstantFloat{" + get() + '}';
     }
 }

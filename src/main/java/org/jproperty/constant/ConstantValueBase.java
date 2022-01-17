@@ -4,7 +4,7 @@ import org.jproperty.ChangeListener;
 import org.jproperty.InvalidationListener;
 import org.jproperty.ObservableValue;
 
-public abstract class ConstantPropertyBase<T> implements ObservableValue<T> {
+public abstract class ConstantValueBase<T> implements ObservableValue<T> {
 
     @Override
     public void addListener(ChangeListener<? super T> listener) {

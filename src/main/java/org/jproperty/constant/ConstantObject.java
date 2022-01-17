@@ -2,11 +2,11 @@ package org.jproperty.constant;
 
 import org.jproperty.value.ObservableObjectValue;
 
-public class ConstantObjectProperty<T> extends ConstantPropertyBase<T> implements ObservableObjectValue<T> {
+public class ConstantObject<T> extends ConstantValueBase<T> implements ObservableObjectValue<T> {
 
     private final T value;
 
-    public ConstantObjectProperty(T value) {
+    public ConstantObject(T value) {
         this.value = value;
     }
 
@@ -17,6 +17,6 @@ public class ConstantObjectProperty<T> extends ConstantPropertyBase<T> implement
 
     @Override
     public String toString() {
-        return "ConstantObjectProperty{" + get() + '}';
+        return "ConstantObject{" + get() + '}';
     }
 }

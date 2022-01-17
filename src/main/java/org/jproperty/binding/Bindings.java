@@ -1,8 +1,8 @@
 package org.jproperty.binding;
 
 import org.jproperty.ObservableValue;
-import org.jproperty.constant.ConstantFloatProperty;
-import org.jproperty.constant.ConstantIntegerProperty;
+import org.jproperty.constant.ConstantFloat;
+import org.jproperty.constant.ConstantInteger;
 import org.jproperty.value.ObservableFloatValue;
 import org.jproperty.value.ObservableIntegerValue;
 
@@ -25,11 +25,11 @@ public final class Bindings {
     }
 
     public static IntegerBinding add(ObservableIntegerValue a, int b) {
-        return add(a, new ConstantIntegerProperty(b));
+        return add(a, new ConstantInteger(b));
     }
 
     public static IntegerBinding add(int a, ObservableIntegerValue b) {
-        return add(new ConstantIntegerProperty(a), b);
+        return add(new ConstantInteger(a), b);
     }
 
     public static IntegerBinding sub(ObservableIntegerValue a, ObservableIntegerValue b) {
@@ -42,11 +42,11 @@ public final class Bindings {
     }
 
     public static IntegerBinding sub(ObservableIntegerValue a, int b) {
-        return sub(a, new ConstantIntegerProperty(b));
+        return sub(a, new ConstantInteger(b));
     }
 
     public static IntegerBinding sub(int a, ObservableIntegerValue b) {
-        return sub(new ConstantIntegerProperty(a), b);
+        return sub(new ConstantInteger(a), b);
     }
 
     public static IntegerBinding mul(ObservableIntegerValue a, ObservableIntegerValue b) {
@@ -59,11 +59,11 @@ public final class Bindings {
     }
 
     public static IntegerBinding mul(ObservableIntegerValue a, int b) {
-        return mul(a, new ConstantIntegerProperty(b));
+        return mul(a, new ConstantInteger(b));
     }
 
     public static IntegerBinding mul(int a, ObservableIntegerValue b) {
-        return mul(new ConstantIntegerProperty(a), b);
+        return mul(new ConstantInteger(a), b);
     }
 
     public static IntegerBinding div(ObservableIntegerValue a, ObservableIntegerValue b) {
@@ -76,11 +76,11 @@ public final class Bindings {
     }
 
     public static IntegerBinding div(ObservableIntegerValue a, int b) {
-        return div(a, new ConstantIntegerProperty(b));
+        return div(a, new ConstantInteger(b));
     }
 
     public static IntegerBinding div(int a, ObservableIntegerValue b) {
-        return div(new ConstantIntegerProperty(a), b);
+        return div(new ConstantInteger(a), b);
     }
 
     public static IntegerBinding sum(ObservableIntegerValue... values) {
@@ -158,11 +158,11 @@ public final class Bindings {
     }
 
     public static FloatBinding add(ObservableFloatValue a, float b) {
-        return add(a, new ConstantFloatProperty(b));
+        return add(a, new ConstantFloat(b));
     }
 
     public static FloatBinding add(float a, ObservableFloatValue b) {
-        return add(new ConstantFloatProperty(a), b);
+        return add(new ConstantFloat(a), b);
     }
 
     public static FloatBinding sub(ObservableFloatValue a, ObservableFloatValue b) {
@@ -175,11 +175,11 @@ public final class Bindings {
     }
 
     public static FloatBinding sub(ObservableFloatValue a, float b) {
-        return sub(a, new ConstantFloatProperty(b));
+        return sub(a, new ConstantFloat(b));
     }
 
     public static FloatBinding sub(float a, ObservableFloatValue b) {
-        return sub(new ConstantFloatProperty(a), b);
+        return sub(new ConstantFloat(a), b);
     }
 
     public static FloatBinding mul(ObservableFloatValue a, ObservableFloatValue b) {
@@ -192,11 +192,11 @@ public final class Bindings {
     }
 
     public static FloatBinding mul(ObservableFloatValue a, float b) {
-        return mul(a, new ConstantFloatProperty(b));
+        return mul(a, new ConstantFloat(b));
     }
 
     public static FloatBinding mul(float a, ObservableFloatValue b) {
-        return mul(new ConstantFloatProperty(a), b);
+        return mul(new ConstantFloat(a), b);
     }
 
     public static FloatBinding div(ObservableFloatValue a, ObservableFloatValue b) {
@@ -209,11 +209,11 @@ public final class Bindings {
     }
 
     public static FloatBinding div(ObservableFloatValue a, float b) {
-        return div(a, new ConstantFloatProperty(b));
+        return div(a, new ConstantFloat(b));
     }
 
     public static FloatBinding div(float a, ObservableFloatValue b) {
-        return div(new ConstantFloatProperty(a), b);
+        return div(new ConstantFloat(a), b);
     }
 
     public static FloatBinding sum(ObservableFloatValue... values) {
