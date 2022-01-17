@@ -5,6 +5,7 @@ import org.jproperty.constant.ConstantFloat;
 import org.jproperty.constant.ConstantInteger;
 import org.jproperty.value.ObservableFloatValue;
 import org.jproperty.value.ObservableIntegerValue;
+import org.jproperty.value.ObservableNumberValue;
 
 import java.util.function.Function;
 
@@ -505,6 +506,58 @@ public final class Bindings {
                 bind(this.observable);
 
                 return this.observable.getValue();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value, this.observable);
+            }
+        };
+    }
+
+    public static <I> IntegerBinding flatMapToInteger(ObservableValue<I> value, Function<I, ObservableNumberValue> mapper) {
+        return new IntegerBinding() {
+
+            private ObservableNumberValue observable;
+
+            {
+                this.observable = mapper.apply(value.getValue());
+                bind(value, this.observable);
+            }
+
+            @Override
+            protected int compute() {
+                unbind(this.observable);
+                this.observable = mapper.apply(value.getValue());
+                bind(this.observable);
+
+                return this.observable.getIntValue();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value, this.observable);
+            }
+        };
+    }
+
+    public static <I> FloatBinding flatMapToFloat(ObservableValue<I> value, Function<I, ObservableNumberValue> mapper) {
+        return new FloatBinding() {
+
+            private ObservableNumberValue observable;
+
+            {
+                this.observable = mapper.apply(value.getValue());
+                bind(value, this.observable);
+            }
+
+            @Override
+            protected float compute() {
+                unbind(this.observable);
+                this.observable = mapper.apply(value.getValue());
+                bind(this.observable);
+
+                return this.observable.getFloatValue();
             }
 
             @Override
