@@ -3,8 +3,11 @@ package org.jproperty
 import org.jproperty.binding.Bindings
 import org.jproperty.binding.FloatBinding
 import org.jproperty.binding.IntegerBinding
+import org.jproperty.binding.ObjectBinding
 import org.jproperty.value.ObservableFloatValue
 import org.jproperty.value.ObservableIntegerValue
+import org.jproperty.value.ObservableNumberValue
+import org.jproperty.value.ObservableObjectValue
 
 operator fun ObservableIntegerValue.plus(other: ObservableIntegerValue): IntegerBinding = Bindings.add(this, other)
 operator fun ObservableIntegerValue.plus(other: Int): IntegerBinding = Bindings.add(this, other)
@@ -45,3 +48,12 @@ infix fun ObservableFloatValue.min(other: Float): FloatBinding = Bindings.min(ot
 fun <T> ObservableValue<T>.mapToInteger(mapper: (T) -> Int): IntegerBinding = Bindings.mapToInt(this, mapper)
 fun <T> ObservableValue<T>.mapToFloat(mapper: (T) -> Float): FloatBinding = Bindings.mapToFloat(this, mapper)
 fun <I, O> ObservableValue<I>.map(mapper: (I) -> O): Binding<O> = Bindings.map(this, mapper)
+
+fun <T> ObservableValue<T>.flatMapToInteger(mapper: (T) -> ObservableNumberValue): IntegerBinding =
+    Bindings.flatMapToInteger(this, mapper)
+
+fun <T> ObservableValue<T>.flatMapToFloat(mapper: (T) -> ObservableNumberValue): FloatBinding =
+    Bindings.flatMapToFloat(this, mapper)
+
+fun <I, O> ObservableValue<I>.flatMap(mapper: (I) -> ObservableObjectValue<O>): ObjectBinding<O> =
+    Bindings.flatMap(this, mapper)
