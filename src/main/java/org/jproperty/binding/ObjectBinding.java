@@ -1,20 +1,12 @@
 package org.jproperty.binding;
 
 import org.jproperty.Binding;
-import org.jproperty.Observable;
 import org.jproperty.value.ObservableObjectValue;
 
 public abstract class ObjectBinding<T> extends BindingBase<T> implements Binding<T>, ObservableObjectValue<T> {
 
-    private final Observable[] dependencies;
-
     private T value;
     private boolean valid = false;
-
-    public ObjectBinding(Observable... dependencies) {
-        this.dependencies = dependencies;
-        bind(this.dependencies);
-    }
 
     @Override
     public final void invalidate() {
@@ -25,8 +17,7 @@ public abstract class ObjectBinding<T> extends BindingBase<T> implements Binding
     }
 
     @Override
-    public final void dispose() {
-        unbind(this.dependencies);
+    public void dispose() {
     }
 
     @Override

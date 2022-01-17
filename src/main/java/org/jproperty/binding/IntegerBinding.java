@@ -1,20 +1,12 @@
 package org.jproperty.binding;
 
 import org.jproperty.Binding;
-import org.jproperty.Observable;
 import org.jproperty.value.ObservableIntegerValue;
 
 public abstract class IntegerBinding extends BindingBase<Number> implements Binding<Number>, ObservableIntegerValue {
 
-    private final Observable[] dependencies;
-
     private int value;
     private boolean valid = false;
-
-    public IntegerBinding(Observable... dependencies) {
-        this.dependencies = dependencies;
-        bind(this.dependencies);
-    }
 
     @Override
     public final void invalidate() {
@@ -25,8 +17,7 @@ public abstract class IntegerBinding extends BindingBase<Number> implements Bind
     }
 
     @Override
-    public final void dispose() {
-        unbind(this.dependencies);
+    public void dispose() {
     }
 
     @Override

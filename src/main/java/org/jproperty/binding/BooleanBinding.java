@@ -1,20 +1,12 @@
 package org.jproperty.binding;
 
 import org.jproperty.Binding;
-import org.jproperty.Observable;
 import org.jproperty.value.ObservableBooleanValue;
 
 public abstract class BooleanBinding extends BindingBase<Boolean> implements Binding<Boolean>, ObservableBooleanValue {
 
-    private final Observable[] dependencies;
-
     private boolean value;
     private boolean valid = false;
-
-    public BooleanBinding(Observable... dependencies) {
-        this.dependencies = dependencies;
-        bind(this.dependencies);
-    }
 
     @Override
     public final void invalidate() {
@@ -25,8 +17,8 @@ public abstract class BooleanBinding extends BindingBase<Boolean> implements Bin
     }
 
     @Override
-    public final void dispose() {
-        unbind(this.dependencies);
+    public void dispose() {
+
     }
 
     @Override

@@ -16,10 +16,19 @@ public final class Bindings {
     }
 
     public static IntegerBinding add(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntegerBinding(a, b) {
+        return new IntegerBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected int compute() {
                 return a.get() + b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -33,10 +42,19 @@ public final class Bindings {
     }
 
     public static IntegerBinding sub(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntegerBinding(a, b) {
+        return new IntegerBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected int compute() {
                 return a.get() - b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -50,10 +68,19 @@ public final class Bindings {
     }
 
     public static IntegerBinding mul(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntegerBinding(a, b) {
+        return new IntegerBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected int compute() {
                 return a.get() * b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -67,10 +94,19 @@ public final class Bindings {
     }
 
     public static IntegerBinding div(ObservableIntegerValue a, ObservableIntegerValue b) {
-        return new IntegerBinding(a, b) {
+        return new IntegerBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected int compute() {
                 return a.get() / b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -84,7 +120,11 @@ public final class Bindings {
     }
 
     public static IntegerBinding sum(ObservableIntegerValue... values) {
-        return new IntegerBinding(values) {
+        return new IntegerBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected int compute() {
                 int sum = 0;
@@ -93,11 +133,20 @@ public final class Bindings {
                 }
                 return sum;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static IntegerBinding max(ObservableIntegerValue... values) {
-        return new IntegerBinding(values) {
+        return new IntegerBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected int compute() {
                 int max = values[0].get();
@@ -106,11 +155,20 @@ public final class Bindings {
                 }
                 return max;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static IntegerBinding min(ObservableIntegerValue... values) {
-        return new IntegerBinding(values) {
+        return new IntegerBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected int compute() {
                 int min = values[0].get();
@@ -119,11 +177,20 @@ public final class Bindings {
                 }
                 return min;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static IntegerBinding min(int max, ObservableIntegerValue... values) {
-        return new IntegerBinding(values) {
+        return new IntegerBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected int compute() {
                 int min = max;
@@ -132,11 +199,20 @@ public final class Bindings {
                 }
                 return min;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static IntegerBinding max(int min, ObservableIntegerValue... values) {
-        return new IntegerBinding(values) {
+        return new IntegerBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected int compute() {
                 int max = min;
@@ -145,14 +221,28 @@ public final class Bindings {
                 }
                 return max;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static FloatBinding add(ObservableFloatValue a, ObservableFloatValue b) {
-        return new FloatBinding(a, b) {
+        return new FloatBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected float compute() {
                 return a.get() + b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -166,10 +256,19 @@ public final class Bindings {
     }
 
     public static FloatBinding sub(ObservableFloatValue a, ObservableFloatValue b) {
-        return new FloatBinding(a, b) {
+        return new FloatBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected float compute() {
                 return a.get() - b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -183,10 +282,19 @@ public final class Bindings {
     }
 
     public static FloatBinding mul(ObservableFloatValue a, ObservableFloatValue b) {
-        return new FloatBinding(a, b) {
+        return new FloatBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected float compute() {
                 return a.get() * b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -200,10 +308,19 @@ public final class Bindings {
     }
 
     public static FloatBinding div(ObservableFloatValue a, ObservableFloatValue b) {
-        return new FloatBinding(a, b) {
+        return new FloatBinding() {
+            {
+                bind(a, b);
+            }
+
             @Override
             protected float compute() {
                 return a.get() / b.get();
+            }
+
+            @Override
+            public void dispose() {
+                unbind(a, b);
             }
         };
     }
@@ -217,7 +334,11 @@ public final class Bindings {
     }
 
     public static FloatBinding sum(ObservableFloatValue... values) {
-        return new FloatBinding(values) {
+        return new FloatBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected float compute() {
                 float sum = 0;
@@ -226,11 +347,20 @@ public final class Bindings {
                 }
                 return sum;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static FloatBinding min(ObservableFloatValue... values) {
-        return new FloatBinding(values) {
+        return new FloatBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected float compute() {
                 float min = values[0].get();
@@ -239,11 +369,20 @@ public final class Bindings {
                 }
                 return min;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static FloatBinding min(float max, ObservableFloatValue... values) {
-        return new FloatBinding(values) {
+        return new FloatBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected float compute() {
                 float min = max;
@@ -252,11 +391,20 @@ public final class Bindings {
                 }
                 return min;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static FloatBinding max(ObservableFloatValue... values) {
-        return new FloatBinding(values) {
+        return new FloatBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected float compute() {
                 float max = values[0].get();
@@ -265,11 +413,20 @@ public final class Bindings {
                 }
                 return max;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static FloatBinding max(float min, ObservableFloatValue... values) {
-        return new FloatBinding(values) {
+        return new FloatBinding() {
+            {
+                bind(values);
+            }
+
             @Override
             protected float compute() {
                 float max = min;
@@ -278,11 +435,16 @@ public final class Bindings {
                 }
                 return max;
             }
+
+            @Override
+            public void dispose() {
+                unbind(values);
+            }
         };
     }
 
     public static <I, O> ObjectBinding<O> map(ObservableValue<I> value, Function<I, O> mapper) {
-        return new ObjectBinding<O>(value) {
+        return new ObjectBinding<O>() {
             @Override
             protected O compute() {
                 return mapper.apply(value.getValue());
@@ -291,19 +453,37 @@ public final class Bindings {
     }
 
     public static <T> IntegerBinding mapToInt(ObservableValue<T> value, Function<T, Integer> mapper) {
-        return new IntegerBinding(value) {
+        return new IntegerBinding() {
+            {
+                bind(value);
+            }
+
             @Override
             protected int compute() {
                 return mapper.apply(value.getValue());
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value);
             }
         };
     }
 
     public static <T> FloatBinding mapToFloat(ObservableValue<T> value, Function<T, Float> mapper) {
-        return new FloatBinding(value) {
+        return new FloatBinding() {
+            {
+                bind(value);
+            }
+
             @Override
             protected float compute() {
                 return mapper.apply(value.getValue());
+            }
+
+            @Override
+            public void dispose() {
+                unbind(value);
             }
         };
     }

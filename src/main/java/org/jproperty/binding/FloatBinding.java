@@ -1,20 +1,12 @@
 package org.jproperty.binding;
 
 import org.jproperty.Binding;
-import org.jproperty.Observable;
 import org.jproperty.value.ObservableFloatValue;
 
 public abstract class FloatBinding extends BindingBase<Number> implements Binding<Number>, ObservableFloatValue {
 
-    private final Observable[] dependencies;
-
     private float value;
     private boolean valid = false;
-
-    public FloatBinding(Observable... dependencies) {
-        this.dependencies = dependencies;
-        bind(this.dependencies);
-    }
 
     @Override
     public final void invalidate() {
@@ -25,8 +17,7 @@ public abstract class FloatBinding extends BindingBase<Number> implements Bindin
     }
 
     @Override
-    public final void dispose() {
-        unbind(this.dependencies);
+    public void dispose() {
     }
 
     @Override
