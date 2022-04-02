@@ -38,6 +38,8 @@ public class BindingTest {
 
         final Binding<String> expression = Bindings.map(this.stringProperty, s -> s.substring(5));
 
+        Assertions.assertEquals(expression.getValue(), "is a string");
+
         this.stringProperty.setValue("This is another string");
 
         Assertions.assertEquals(expression.getValue(), "is another string");

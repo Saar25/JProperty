@@ -446,6 +446,10 @@ public final class Bindings {
 
     public static <I, O> ObjectBinding<O> map(ObservableValue<I> value, Function<I, O> mapper) {
         return new ObjectBinding<O>() {
+            {
+                bind(value);
+            }
+            
             @Override
             protected O compute() {
                 return mapper.apply(value.getValue());
